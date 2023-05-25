@@ -1,4 +1,9 @@
-export default function Home({ formattedDate }) {
+export default function Home() {
+  const buildDate = Date.now();
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
+    dateStyle: "long",
+    timeStyle: "long",
+  }).format(buildDate);
   return (
     <>
       <h1>Static page</h1>
@@ -8,14 +13,4 @@ export default function Home({ formattedDate }) {
       </p>
     </>
   );
-}
-
-export async function getStaticProps() {
-  const buildDate = Date.now();
-  const formattedDate = new Intl.DateTimeFormat("en-US", {
-    dateStyle: "long",
-    timeStyle: "long",
-  }).format(buildDate);
-
-  return { props: { formattedDate } };
 }
